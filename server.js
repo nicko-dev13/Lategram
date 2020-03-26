@@ -13,7 +13,7 @@ app.use(express.json({ extended: false })); //For the body parser
 app.get('/', (req, res) => res.send({ msg: 'Welcome to the LateGram API' }));
 
 //Define Routes
-app.use('/api/users', require('./routes/users'));//The User Route
+
 
 //Listening PORT
 const PORT = process.env.PORT || 5000;
