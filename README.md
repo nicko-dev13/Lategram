@@ -4,7 +4,7 @@
  # For installation on server side
 npm install
 
-# For installation in client side
+# For installation on client side
 cd to client 
 npm install
 
