@@ -31,8 +31,13 @@ router.post(
 		try {
 			//Checking if the email already exists
 			let user = await User.findOne({ email: email });
+			
+			
+			
 			//if exists throwing error with status 400
-			if (user) res.status(400).json({ msg: 'User already exists' });
+			if (user) {
+				res.status(400).json({ msg: 'User already exists' });
+			}
 			//else preparing for saving
 			user = new User({
 				name,
