@@ -1,11 +1,18 @@
 const express = require("express");
 const router = express.Router();
 
-router.use(bodyParser.urlencoded({extended: true}));
+
 
 router.post('/', (req, res) => {
-    console.log("Post Created");
-    console.log(req.body);
+  try {
+      const { caption } = req.body;
+      res.json(caption);
+  } catch (error) {
+      console.log(error);
+      res.status(500).json({
+          msg: "Server Error"
+      })
+  }
 });
 
 module.exports = router;
