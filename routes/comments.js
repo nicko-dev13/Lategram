@@ -1,32 +1,27 @@
-const express=require('express');
-const router=express.Router();
-const Comment=require('\models\Comments');
-const mongoPractice= require ('./mongoose');
+const express = require('express');
+const router = express.Router();
+const Comment = require('../models/Comments');
 
-// const returnComment=async (req,res)=>{
-//     const returnedComment= new Comment({
-//         userName:req.body.userName,
-//         Date:req.body.createdAt,
-//         comment:req.body.comment,
-
-//     })
-// }
-
-// app.use(bodyParser.urlencoded({
-//     extended:true
-// }));
-router.post('api/comments',mongoPractice.createProduct);
-
-router.get('api/comments',(req,res)=>{
-    res.send();
+//@route POST api/comments
+//@desc Posting comments to user posts
+//@access Private
+router.post('/', async (req, res) => {
+	try {
+		//destructuring
+		const { username, comment } = req.body;
+		//assigning
+		const newComment = new Comment({
+			username,
+			comment
+		});
+		//saving to database
+		const saveComment = await newComment.save();
+		//sending result
+		res.json(saveComment);
+	} catch (error) {
+		console.log(error);
+		res.send(500).json({ msg: 'Server Error' });
+	}
 });
 
-router.put('api/comments/:id',(req,res)=>{
-    res.send();
-
-});
-
-router.delete('api/comments',(req,res)=>{
-    res.send();
-
-});
+module.exports = router;
