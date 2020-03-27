@@ -24,4 +24,14 @@ router.post('/', async (req, res) => {
 	}
 });
 
+router.get('/',async (req, res) => {
+   const result= Comment.find({}).exec(function(err,comment){
+        if(err){
+            console.log('error');
+        }
+        else{
+            res.json(comment);
+        }
+    })
+});
 module.exports = router;
