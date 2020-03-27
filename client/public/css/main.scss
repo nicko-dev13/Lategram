@@ -1,35 +1,72 @@
+@import url('https://fonts.googleapis.com/css?family=Grand+Hotel&display=swap');
+
 body {
-    --grey: rgb(236, 236, 236);
+    --grey: #fafafa;
     margin: 0;
-    background: var(--grey);
     font-family: sans-serif;
+}
+
+.form-page{
+    background: var(--grey);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .form-container {
     text-align: center;
     background: white;
     height: 70vh;
-    width: 25%;
-    min-width: 300px;
-    margin: 100px auto;
-    padding: 20px;
+    width: 20%;
+    min-width: 340px;
+    margin: 50px auto;
+    margin-bottom: 20px;
+    padding: 30px;
     border: 1px solid rgb(218, 218, 218);
+    color: #8e8e8e;
     form {
         width: 100%;
+        font-size: 15px;
+        h1 {
+            margin: 0;
+            color: black;
+            font-size: 4em;
+            font-family: 'Grand Hotel', cursive;
+        }
+        h4 {
+            font-size: 1.1em;
+        }
+        hr {
+            border: 0;
+            border-top: 1px solid rgb(218, 218, 218);
+        }
         input {
             background: var(--grey);
             width: 100%;
             height: 30px;
             margin-top: 10px;
             border: 1px solid rgb(218, 218, 218);
+            padding-left: 10px;
+            border-radius: 4px;
         }
         button {
             width: 100%;
             height: 30px;
-            background: rgb(51, 122, 255);
+            background: #0095f6;
             color: white;
             margin: 20px 0;
             border: none;
+            border-radius: 4px;
         }
     }
+}
+
+.alt-link {
+    background: white;
+    width: 20%;
+    min-width: 400px;
+    border: 1px solid rgb(218, 218, 218);
+    margin: 0 auto;
+    padding: 15px 0 10px 0;
+    text-align: center;
 }
