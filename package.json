@@ -23,6 +23,7 @@
   "homepage": "https://github.com/ShivPrashant777/Lategram#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
     "config": "^3.3.1",
     "express": "^4.17.1",
     "express-validator": "^6.4.0",
