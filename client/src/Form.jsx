@@ -1,11 +1,12 @@
 import React from "react";
+import Logofull from "./Logofull";
 
 function Form() {
     return (
         <div className="form-page">
             <div className="form-container">
                 <form action="http://localhost:5000/api/users" method="POST">
-                    <h1>Lategram</h1>
+                    <Logofull fontSize="70px"/>
                     <h4>Sign up to see photos and videos from your friends.</h4>
                     <hr />
                     <input type="email" name="email" placeholder="Enter Email" />

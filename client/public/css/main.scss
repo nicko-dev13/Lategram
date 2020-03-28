@@ -6,6 +6,30 @@ body {
     font-family: sans-serif;
 }
 
+// Reusable COMPONENTS //
+.logo-full {
+    margin: 0;
+    color: black;
+    font-size: 4em;
+    font-family: 'Grand Hotel', cursive;
+}
+
+.user-image {
+    background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+    border-radius: 1500px;
+    height: 50px;
+    width: 50px;
+    align-self: center; 
+    img {
+        position: relative;
+        left: 3%;
+        top: 3%;
+        width: 95%;
+        border-radius: 500px;
+    }
+}
+
+////
 .form-page{
     background: var(--grey);
     height: 100vh;
@@ -27,12 +51,6 @@ body {
     form {
         width: 100%;
         font-size: 15px;
-        h1 {
-            margin: 0;
-            color: black;
-            font-size: 4em;
-            font-family: 'Grand Hotel', cursive;
-        }
         h4 {
             font-size: 1.1em;
         }
@@ -69,4 +87,42 @@ body {
     margin: 0 auto;
     padding: 15px 0 10px 0;
     text-align: center;
+}
+
+
+// Nav //
+
+.nav {
+    padding: 5px 0;
+    background: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    border-bottom: 1px solid rgb(218, 218, 218);
+
+    input {
+        padding: 5px;
+        height: 60%;
+        align-self: center;
+        border: 1px solid rgb(218, 218, 218);
+        border-radius: 4px;
+        text-align: center;
+    }
+}
+
+// UserPAGE //
+
+.user-page {
+    background:var(--grey);
+}
+
+// Userinfo //
+
+.user-info {
+    display: flex;
+    margin: 100px 100px;
+    width: 100%;
+    .info {
+        margin-left: 100px;
+    }
 }
