@@ -42,7 +42,11 @@ router.post('/',[
         const newPost = new Post({
             postTitle : postTitle,
             post: post,
-            user: req.user.id
+            user: req.user.id,
+            comments:[
+                username=req.body.username, 
+                comment=req.body.comment
+            ]
         });
         const savePost = await newPost.save();
 

@@ -34,4 +34,17 @@ router.get('/',async (req, res) => {
         }
     })
 });
+
+
+// router.put('/:id',async (req, res) => {
+// 	const result= Comment.find({req.body.params}).exec(function(err,comment){
+// 		 if(err){
+// 			 console.log('error');
+// 		 }
+// 		 else{
+// 			 res.json(comment);
+// 		 }
+// 	 })
+//  });
+
 module.exports = router;
