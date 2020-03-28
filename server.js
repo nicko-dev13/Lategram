@@ -1,18 +1,17 @@
 const express = require('express');
 const connectDB = require('./config/db');
 const app = express();
-const bodyParser = require("body-parser");
+const bodyParser = require('body-parser');
 
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 //Connecting database
 connectDB();
 
 // //Init Middleware
-// app.use(express.json({ extended: false })); //For the body parser
+app.use(express.json({ extended: false })); //For the body parser
 
 //Welcome Route
 app.get('/', (req, res) => res.send({ msg: 'Welcome to the LateGram API' }));
-
 
 //Define Routes
 app.use('/api/users', require('./routes/users'));

@@ -5,6 +5,31 @@ body {
   font-family: sans-serif;
 }
 
+.logo-full {
+  margin: 0;
+  color: black;
+  font-size: 4em;
+  font-family: 'Grand Hotel', cursive;
+}
+
+.user-image {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  border-radius: 1500px;
+  height: 50px;
+  width: 50px;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+.user-image img {
+  position: relative;
+  left: 3%;
+  top: 3%;
+  width: 95%;
+  border-radius: 500px;
+}
+
 .form-page {
   background: var(--grey);
   height: 100vh;
@@ -33,13 +58,6 @@ body {
 .form-container form {
   width: 100%;
   font-size: 15px;
-}
-
-.form-container form h1 {
-  margin: 0;
-  color: black;
-  font-size: 4em;
-  font-family: 'Grand Hotel', cursive;
 }
 
 .form-container form h4 {
@@ -79,5 +97,47 @@ body {
   margin: 0 auto;
   padding: 15px 0 10px 0;
   text-align: center;
+}
+
+.nav {
+  padding: 5px 0;
+  background: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  border-bottom: 1px solid #dadada;
+}
+
+.nav input {
+  padding: 5px;
+  height: 60%;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  border: 1px solid #dadada;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.user-page {
+  background: var(--grey);
+}
+
+.user-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 100px 100px;
+  width: 100%;
+}
+
+.user-info .info {
+  margin-left: 100px;
 }
 /*# sourceMappingURL=main.css.map */
