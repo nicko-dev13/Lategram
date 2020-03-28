@@ -9,7 +9,7 @@ function Navbar() {
              <nav className="nav">
                 <Logofull fontSize="40px" />
                 <input placeholder="Search"></input>
-                <Userimage />
+                <Userimage width="50px"/>
              </nav>
         </div>
     );

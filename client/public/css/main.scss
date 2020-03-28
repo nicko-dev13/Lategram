@@ -22,10 +22,11 @@ body {
     align-self: center; 
     img {
         position: relative;
-        left: 3%;
+        left: 2.5%;
         top: 3%;
         width: 95%;
         border-radius: 500px;
+        border: 2px solid white;
     }
 }
 
@@ -119,10 +120,17 @@ body {
 // Userinfo //
 
 .user-info {
-    display: flex;
-    margin: 100px 100px;
-    width: 100%;
-    .info {
-        margin-left: 100px;
+    .info-header {
+        display: flex;
+        margin: 50px 0;
+        justify-content: center;
+        width: 100%;
+        .info {
+            align-self: center;
+            margin-left: 100px;
+            span {
+                padding-right: 20px;;
+            }
+        }
     }
 }
