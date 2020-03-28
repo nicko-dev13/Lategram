@@ -151,4 +151,41 @@ body {
 .user-info .info-header .info span {
   padding-right: 20px;
 }
+
+.post-container {
+  display: -ms-grid;
+  display: grid;
+  margin: 10px 0;
+  padding: 0 10%;
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
+  min-width: 970px;
+  overflow: hidden;
+}
+
+.post-container img {
+  padding: 15px;
+  width: 100%;
+  max-width: 500px;
+  height: 20vw;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.post-container img:hover {
+  opacity: 0.5;
+}
+
+@media only screen and (max-width: 970px) {
+  .post-container {
+    padding: 0;
+    min-width: 200px;
+  }
+  .post-container img {
+    padding: 0;
+    width: 100%;
+    height: 10vw;
+  }
+}
 /*# sourceMappingURL=main.css.map */

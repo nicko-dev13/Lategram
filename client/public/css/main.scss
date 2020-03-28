@@ -134,3 +134,40 @@ body {
         }
     }
 }
+
+// POSTS //
+
+.post-container {
+    display: grid;
+    margin: 10px 0;
+    padding: 0 10%;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: center;
+    min-width: 970px;
+    overflow: hidden;
+    img {
+        padding: 15px;
+        width: 100%;
+        max-width: 500px;
+        height: 20vw;
+        object-fit: cover;    
+    }
+    img:hover {
+        opacity: 0.5;
+    }
+}
+
+
+//// MOBILE ////
+
+@media only screen and (max-width: 970px) {
+    .post-container {
+        padding: 0;
+        min-width: 200px;
+        img {
+            padding: 0;
+            width: 100%;
+            height: 10vw;
+        }
+    }
+}

@@ -6,7 +6,7 @@ function Userinfo() {
     return (
         <div className="user-info">
             <div className="info-header">
-                <Userimage width="200px"/>
+                <Userimage width="15vw"/>
                 <div className="info">
                     <p>UserNAME</p>
                     <span> <b>99</b> posts  </span>
