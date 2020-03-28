@@ -4,14 +4,14 @@ function Form() {
     return (
         <div className="form-page">
             <div className="form-container">
-                <form>
+                <form action="http://localhost:5000/api/users" method="POST">
                     <h1>Lategram</h1>
                     <h4>Sign up to see photos and videos from your friends.</h4>
                     <hr />
-                    <input type="email" placeholder="Enter Email" />
-                    <input type="text" placeholder="First Name" />
-                    <input type="text" placeholder="Last Name" />
-                    <input type="password" placeholder="Password" />
+                    <input type="email" name="email" placeholder="Enter Email" />
+                    <input type="text" name="name" placeholder="First Name" />
+                    {/* <input type="text" placeholder="Last Name" /> */}
+                    <input type="password" name="password" placeholder="Password" />
                     <button type="submit" >Sign Up</button>
                     <p>By signing up, you agree to our <b>Terms, Data Policy</b>  and <b>Cookies Policy .</b> </p>
                 </form>
