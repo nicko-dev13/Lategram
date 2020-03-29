@@ -43,10 +43,7 @@ router.post('/',[
             postTitle : postTitle,
             post: post,
             user: req.user.id,
-            comments:[
-                username=req.body.username, 
-                comment=req.body.comment
-            ]
+            comment:comment.split(',').map(comment=>{return{comment:comment}})
         });
         const savePost = await newPost.save();
 
