@@ -4,6 +4,12 @@ body {
     --grey: #fafafa;
     margin: 0;
     font-family: sans-serif;
+    a {
+        text-decoration: none;
+    }
+    a:visited {
+        color: #0095f6;
+    }
 }
 
 // Reusable COMPONENTS //
@@ -22,11 +28,11 @@ body {
     align-self: center; 
     img {
         position: relative;
-        left: 2.5%;
-        top: 3%;
+        left: 1.8%;
+        top: 2.3%;
         width: 95%;
         border-radius: 500px;
-        border: 2px solid white;
+        border: 0.1em solid white;
     }
 }
 
@@ -122,10 +128,12 @@ body {
 .user-info {
     .info-header {
         display: flex;
-        margin: 50px 0;
+        margin: 0;
+        padding: 50px 0;
         justify-content: center;
         width: 100%;
         font-size: 1.2vw;
+        border-bottom: 1px solid rgb(218, 218, 218);
         .info {
             align-self: center;
             margin-left: 100px;
@@ -148,7 +156,7 @@ body {
     overflow: hidden;
     img {
         padding: 15px;
-        width: 100%;
+        width: 90%;
         max-width: 500px;
         height: 20vw;
         object-fit: cover;    
@@ -238,6 +246,4 @@ body {
             width: 100%;
         }
     }
-
-
 }

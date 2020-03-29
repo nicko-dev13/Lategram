@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import Logofull from './Logofull';
 import AuthContext from '../../context/auth/authContext';
+import { Link } from 'react-router-dom';
 
 const Login = (props) => {
 	const authContext = useContext(AuthContext);
@@ -58,6 +59,11 @@ const Login = (props) => {
 						By signing up, you agree to our <b>Terms, Data Policy</b> and <b>Cookies Policy .</b>{' '}
 					</p>
 				</form>
+			</div>
+			<div className="alt-link">
+				<p>
+					Don't have an account? <Link to="/">Sign Up</Link>
+				</p>
 			</div>
 		</div>
 	);

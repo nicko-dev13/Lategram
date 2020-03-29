@@ -5,6 +5,14 @@ body {
   font-family: sans-serif;
 }
 
+body a {
+  text-decoration: none;
+}
+
+body a:visited {
+  color: #0095f6;
+}
+
 .logo-full {
   margin: 0;
   color: black;
@@ -24,11 +32,11 @@ body {
 
 .user-image img {
   position: relative;
-  left: 2.5%;
-  top: 3%;
+  left: 1.8%;
+  top: 2.3%;
   width: 95%;
   border-radius: 500px;
-  border: 2px solid white;
+  border: 0.1em solid white;
 }
 
 .form-page {
@@ -134,12 +142,14 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin: 50px 0;
+  margin: 0;
+  padding: 50px 0;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   width: 100%;
   font-size: 1.2vw;
+  border-bottom: 1px solid #dadada;
 }
 
 .user-info .info-header .info {
@@ -167,7 +177,7 @@ body {
 
 .post-container img {
   padding: 15px;
-  width: 100%;
+  width: 90%;
   max-width: 500px;
   height: 20vw;
   -o-object-fit: cover;
