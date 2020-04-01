@@ -1,17 +1,15 @@
 import React, { useContext } from 'react';
 import Logofull from '../auth/Logofull';
 import Userimage from '../user/Userimage';
-import AuthContext from '../../context/auth/authContext'
-
+import AuthContext from '../../context/auth/authContext';
 
 function Navbar() {
-
-	const authContext = useContext(AuthContext)
+	const authContext = useContext(AuthContext);
 
 	const logOut = (e) => {
-		e.preventDefault()
+		e.preventDefault();
 		authContext.logout();
-	}
+	};
 
 	return (
 		<div>
