@@ -11,7 +11,7 @@ import {
 	LOGIN_SUCCESS,
 	LOGIN_FAIL,
 	LOGOUT,
-	CLEAR_ERRORS
+	CLEAR_ERRORS,
 } from '../types';
 import setAuthToken from '../../utils/setAuthToken';
 
@@ -21,10 +21,13 @@ const AuthState = (props) => {
 		isAuthenticated: null,
 		loading: true,
 		user: null,
-		error: null
+		error: null,
 	};
 
-	const [ state, dispatch ] = useReducer(authReducer, initialState);
+	const [
+		state,
+		dispatch,
+	] = useReducer(authReducer, initialState);
 
 	//Load User
 	const loadUser = async () => {
@@ -35,11 +38,11 @@ const AuthState = (props) => {
 			const res = await axios.get('/api/auth');
 			dispatch({
 				type: USER_LOADED,
-				payload: res.data
+				payload: res.data,
 			});
 		} catch (error) {
 			dispatch({
-				type: AUTH_ERROR
+				type: AUTH_ERROR,
 			});
 		}
 	};
@@ -48,21 +51,21 @@ const AuthState = (props) => {
 	const register = async (formData) => {
 		const config = {
 			header: {
-				'Content-Type': 'application/json'
-			}
+				'Content-Type': 'application/json',
+			},
 		};
 
 		try {
 			const res = await axios.post('/api/users', formData, config);
 			dispatch({
 				type: REGISTER_SUCCESS,
-				payload: res.data
+				payload: res.data,
 			});
 			loadUser();
 		} catch (error) {
 			dispatch({
 				type: REGISTER_FAIL,
-				payload: error.response.data.msg
+				payload: error.response.data.msg,
 			});
 		}
 	};
@@ -71,21 +74,21 @@ const AuthState = (props) => {
 	const login = async (formData) => {
 		const config = {
 			header: {
-				'Content-Type': 'application/json'
-			}
+				'Content-Type': 'application/json',
+			},
 		};
 
 		try {
 			const res = await axios.post('/api/auth', formData, config);
 			dispatch({
 				type: LOGIN_SUCCESS,
-				payload: res.data
+				payload: res.data,
 			});
 			loadUser();
 		} catch (error) {
 			dispatch({
 				type: LOGIN_FAIL,
-				payload: error.response.data.msg
+				payload: error.response.data.msg,
 			});
 		}
 	};
@@ -106,8 +109,9 @@ const AuthState = (props) => {
 				loadUser,
 				login,
 				logout,
-				clearErrors
-			}}>
+				clearErrors,
+			}}
+		>
 			{props.children}
 		</AuthContext.Provider>
 	);
