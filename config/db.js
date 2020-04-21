@@ -12,7 +12,7 @@ const connectDB = async () => {
 			useNewUrlParser: true,
 			useCreateIndex: true,
 			useFindAndModify: false,
-			useUnifiedTopology: true
+			useUnifiedTopology: true,
 		});
 		console.log('MongoDB Connected....');
 		//or else catching the error
@@ -23,7 +23,3 @@ const connectDB = async () => {
 };
 
 module.exports = connectDB;
-
-
-
-    // https://github.com/ShivPrashant777/Lategram.git

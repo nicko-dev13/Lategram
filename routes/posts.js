@@ -1,113 +1,75 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const auth = require("../middlewares/auth");
-const Post = require("../models/Post");
-const User = require("../models/User");
-const { check, validationResult } = require("express-validator");
+const auth = require('../middlewares/auth');
+const Post = require('../models/Post');
+const User = require('../models/User');
+const { check, validationResult } = require('express-validator');
 
 //@route GET api/posts
 //@desc fetches the current users post
 //@acess Private
-router.get("/", auth, async (req, res) => {
-  try {
-    //Fetching all the users where userID matches from token in descending order
-    const posts = await Post.find({ user: req.user.id }).sort({ data: -1 });
-    res.json(posts);
-  } catch (error) {
-    res.status(500).send("Server Error");
-    console.log(error);
-  }
+router.get('/', auth, async (req, res) => {
+	try {
+		//Fetching User Posts by Id
+		const user = await User.findOne({ _id: req.user.id });
+		res.json(user.posts);
+	} catch (error) {
+		res.status(500).send('Server Error');
+		console.log(error);
+	}
 });
 
 //@route POST api/posts
-//@desc add Post to user's posts array
-//@access Public
+//@desc Add Post to user's posts array
+//@access Private
 router.post(
-  "/",
-  [auth, [check("postContent", "Please enter Post Content").not().isEmpty()]],
-  async (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
-    }
+	'/',
+	[auth, [check('postContent', 'Please enter Post Content').not().isEmpty()]],
+	async (req, res) => {
+		const errors = validationResult(req);
+		if (!errors.isEmpty()) {
+			return res.status(400).json({ errors: errors.array() });
+		}
 
-    //Adding post to db
-    post = {
-      postContent: req.body.postContent,
-      createdAt: Date.now(),
-    };
-    try {
-      User.updateOne(
-        { _id: "5e99e490a3550f3e4cf96c0c" },
-        { $push: { posts: post } },
-        function (err) {
-          if (err) {
-            console.log(err);
-          } else {
-            console.log("Updated Document");
-          }
-        }
-      );
-      res.json("Post Added");
-    } catch (error) {
-      console.log(error);
-      res.status(500).send("Server Error");
-    }
-  }
+		//Adding post to db
+		post = {
+			postContent: req.body.postContent,
+			createdAt: Date.now(),
+		};
+		try {
+			User.updateOne(
+				{ _id: req.user.id },
+				{ $push: { posts: post } },
+				function (err) {
+					if (err) {
+						console.log(err);
+					} else {
+						console.log('Updated Document');
+						res.json('Post Added');
+					}
+				}
+			);
+		} catch (error) {
+			console.log(error);
+			res.status(500).send('Server Error');
+		}
+	}
 );
-
-//@route POST api/posts
-//@desc adds the post
-//@acess Private
-// router.post(
-//   "/",
-//   [
-//     auth,
-//     [
-//       check("postTitle", "Please enter a post Title").not().isEmpty(),
-//       check("post", "Please enter the post").not().isEmpty(),
-//     ],
-//   ],
-//   async (req, res) => {
-//     const errors = validationResult(req);
-//     if (!errors.isEmpty()) {
-//       return res.status(400).json({ errors: errors.array() });
-//     }
-
-//     //Adding post to db
-//     const { postTitle, post } = req.body;
-
-//     try {
-//       const newPost = new Post({
-//         postTitle: postTitle,
-//         post: post,
-//         user: req.user.id,
-//         // comment:comment.split(',').map(comment=>{return{comment:comment}})
-//       });
-//       const savePost = await newPost.save();
-
-//       res.json(savePost);
-//     } catch (error) {
-//       console.log(error);
-//       res.status(500).send("Server Error");
-//     }
-//   }
-// );
 
 //@route  PUT api/posts/:id
 //@desc   Update posts
 //@acess  Private
 
-router.put("/:id", (req, res) => {
-  res.send("Update Post");
+router.put('/:id', (req, res) => {
+	res.send('Update Post');
 });
 
 //@route  DELETE api/post
 //@desc   Delete post
 //@acess  Private
 
-router.delete("/:id", (req, res) => {
-  res.send("Delete the post");
+router.delete('/:id', (req, res) => {
+	res.send('Delete the post');
 });
 
 module.exports = router;
