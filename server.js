@@ -17,6 +17,7 @@ app.get('/', (req, res) => res.send({ msg: 'Welcome to the LateGram API' }));
 app.use('/api/users', require('./routes/users'));
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/posts', require('./routes/posts'));
+app.use('/api/profile', require('./routes/profile'));
 app.use('/api/comments', require('./routes/comments'));
 
 //Listening PORT
