@@ -20,35 +20,30 @@ router.get('/', auth, async (req, res) => {
 });
 
 //@route POST api/posts
-//@desc Add Post to user's posts array
-//@access Private
+//@desc adds the post
+//@acess Private
 router.post(
 	'/',
-	[auth, [check('postContent', 'Please enter Post Content').not().isEmpty()]],
+	[
+		auth,
+		[check('postContent', 'Please enter the Post Content').not().isEmpty()],
+	],
 	async (req, res) => {
 		const errors = validationResult(req);
 		if (!errors.isEmpty()) {
 			return res.status(400).json({ errors: errors.array() });
 		}
-
 		//Adding post to db
-		post = {
-			postContent: req.body.postContent,
-			createdAt: Date.now(),
-		};
+		const { postContent } = req.body;
+
 		try {
-			User.updateOne(
-				{ _id: req.user.id },
-				{ $push: { posts: post } },
-				function (err) {
-					if (err) {
-						console.log(err);
-					} else {
-						console.log('Updated Document');
-						res.json('Post Added');
-					}
-				}
-			);
+			const newPost = new Post({
+				postContent: postContent,
+				user_id: req.user.id,
+			});
+			const savePost = await newPost.save();
+			console.log('Post Saved');
+			res.json(savePost);
 		} catch (error) {
 			console.log(error);
 			res.status(500).send('Server Error');

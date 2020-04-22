@@ -2,19 +2,15 @@
 const mongoose = require('mongoose');
 
 const PostSchema = mongoose.Schema({
-	user: {
+	user_id: {
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'users',
 	},
-	postTitle: {
+	postContent: {
 		type: String,
 		required: true,
 	},
-	post: {
-		type: String,
-		required: true,
-	},
-	dateCreated: {
+	createdAt: {
 		type: Date,
 		default: Date.now,
 	},
