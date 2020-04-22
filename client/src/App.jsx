@@ -6,6 +6,8 @@ import AuthState from './context/auth/AuthState';
 import setAuthToken from './utils/setAuthToken';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Userpage from './components/user/Userpage';
+import PostForm from './components/posts/PostForm';
+import PostsState from './context/posts/PostsState';
 
 if (localStorage.token) {
 	setAuthToken(localStorage.token);
@@ -14,13 +16,16 @@ if (localStorage.token) {
 function App() {
 	return (
 		<AuthState>
-			<Router>
-				<Switch>
-					<PrivateRoute exact path="/home" component={Userpage} />
-					<Route exact path="/" component={Register} />
-					<Route exact path="/login" component={Login} />
-				</Switch>
-			</Router>
+			<PostsState>
+				<Router>
+					<Switch>
+						<PrivateRoute exact path="/home" component={Userpage} />
+						<Route exact path="/" component={Register} />
+						<Route exact path="/login" component={Login} />
+						<Route exact path="/post" component={PostForm} />
+					</Switch>
+				</Router>
+			</PostsState>
 		</AuthState>
 	);
 }
