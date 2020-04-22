@@ -7,12 +7,14 @@ import { ADD_POST } from '../types';
 
 const PostsState = (props) => {
 	const initialState = {
-		post: null,
+		post: {
+			postContent: null,
+		},
 	};
 
 	const [state, dispatch] = useReducer(postsReducer, initialState);
 
-	// Add {ost
+	// Add Post
 	const addPost = async (post) => {
 		const config = {
 			header: {
@@ -21,8 +23,9 @@ const PostsState = (props) => {
 		};
 
 		try {
-			const res = await axios.post('/api/users', post, config);
-			dispatch({ type: ADD_POST, payload: res.data });
+			const res = await axios.post('/api/posts', post, config);
+			console.log(res.data);
+			dispatch({ type: ADD_POST, payload: post });
 		} catch (error) {
 			console.log(error);
 		}

@@ -7,13 +7,15 @@ function PostForm() {
 	const { addPost } = postsContext;
 
 	const [post, setPost] = useState({
-		postsContent: '',
+		postContent: '',
 	});
+
+	const { postContent } = post;
 
 	const onChange = (e) => {
 		setPost({
 			...post,
-			postContent: e.target.value,
+			[e.target.name]: e.target.value,
 		});
 	};
 
@@ -29,7 +31,7 @@ function PostForm() {
 					type="text"
 					name="postContent"
 					onChange={onChange}
-					value={post}
+					value={postContent}
 					style={{ width: '200px', margin: '100px 20px', height: '300px' }}
 				/>
 				<button type="submit">Post</button>
