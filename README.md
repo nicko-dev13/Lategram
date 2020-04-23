@@ -2,14 +2,21 @@
 
 Instagram Clone
 
+## SETUP
+
 ## For installation on server side
 
-```npm install
+## in root
+
+```
+npm install
 ```
 
 ## For installation on client side
 
-```cd to client
+cd to client
+
+```
 npm install
 ```
 
@@ -20,6 +27,8 @@ npm run server
 ```
 
 ## For running the react Server
+
+cd .. (root of the app)
 
 ```
 npm run client
