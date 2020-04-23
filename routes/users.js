@@ -81,12 +81,12 @@ router.post(
 );
 
 //@route GET api/users
-//@desc Gets a All Users
+//@desc Gets All Users
 //@access Public
 router.get('/', async (req, res) => {
 	try {
 		var users = await User.find({});
-		res.json({ users });
+		res.send(users.map((user) => user.name));
 	} catch (error) {
 		console.log(error.message);
 		res.status(500).send('Error Fetching Users');
