@@ -5,7 +5,6 @@ Instagram Clone
 ## For installation on server side
 
 ```npm install
-
 ```
 
 ## For installation on client side
