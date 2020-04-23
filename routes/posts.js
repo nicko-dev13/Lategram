@@ -115,19 +115,25 @@ router.put("/like/:id", auth, async (req, res) => {
 //@desc   Like Post
 //@acess  Private
 
-router.put("/like/:id", auth, async (req, res) => {
+router.put("/unlike/:id", auth, async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
 
-    if (post.likes.filter((like) => like.user.toString() === req.user.id) > 0) {
-      return res.status(400).json({ msg: "Post has already been liked" });
+    if (
+      post.likes.filter((like) => like.user.toString() === req.user.id) === 0
+    ) {
+      return res.status(400).json({ msg: "Post has not been liked" });
     }
 
     if (post.user_id.toString() === req.user.id) {
-      return res.status(400).json({ msg: "Cannot Like your own post" });
+      return res.status(400).json({ msg: "Cannot UnLike your own post" });
     }
 
-    post.likes.unshift({ user: req.user.id });
+    const likeIndex = post.likes
+      .map((like) => like.user.toString())
+      .indexOf(req.user.id);
+
+    post.likes.splice(likeIndex, 1);
 
     await post.save();
 
