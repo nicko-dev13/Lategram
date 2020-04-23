@@ -84,4 +84,58 @@ router.delete("/:id", auth, async (req, res) => {
   }
 });
 
+//@route  Put api/post/like/:id
+//@desc   Like Post
+//@acess  Private
+
+router.put("/like/:id", auth, async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.id);
+
+    if (post.likes.filter((like) => like.user.toString() === req.user.id) > 0) {
+      res.status(400).json({ msg: "Post has already been liked" });
+    }
+
+    if (post.user_id.toString() === req.user.id) {
+      res.status(400).json({ msg: "Cannot Like your own post" });
+    }
+
+    post.likes.unshift({ user: req.user.id });
+
+    await post.save();
+
+    res.json(post.likes);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+//@route  Put api/post/unlike/:id
+//@desc   Like Post
+//@acess  Private
+
+router.put("/like/:id", auth, async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.id);
+
+    if (post.likes.filter((like) => like.user.toString() === req.user.id) > 0) {
+      return res.status(400).json({ msg: "Post has already been liked" });
+    }
+
+    if (post.user_id.toString() === req.user.id) {
+      return res.status(400).json({ msg: "Cannot Like your own post" });
+    }
+
+    post.likes.unshift({ user: req.user.id });
+
+    await post.save();
+
+    res.json(post.likes);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
 module.exports = router;
