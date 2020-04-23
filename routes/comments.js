@@ -19,18 +19,6 @@ router.post(
                 return res.status(400).json({ errors: errors.array() });
             }
 
-            // const { comment } = req.body;
-
-            // const newComment = new Comment({
-            //     comment: comment,
-            //     postId: req.params.id,
-            //     userId: req.user.id,
-            // });
-
-            // const saveComment = await newComment.save();
-
-            // res.json(saveComment);
-
             const post = await Post.findById(req.params.id);
             const comment = await Comment.find({ user: req.user.id });
 

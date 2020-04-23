@@ -6,7 +6,7 @@ Instagram Clone
 
 ## For installation on server side
 
-## in root
+in root
 
 ```
 npm install
