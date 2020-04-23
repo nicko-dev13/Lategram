@@ -19,34 +19,46 @@ router.post(
                 return res.status(400).json({ errors: errors.array() });
             }
 
+            // const { comment } = req.body;
+
+            // const newComment = new Comment({
+            //     comment: comment,
+            //     postId: req.params.id,
+            //     userId: req.user.id,
+            // });
+
+            // const saveComment = await newComment.save();
+
+            // res.json(saveComment);
+
             const post = await Post.findById(req.params.id);
             const comment = await Comment.find({ user: req.user.id });
-            console.log(comment);
-            // // if (comment) {
-            // //     return res
-            // //         .status(400)
-            // //         .json({ msg: "Already Commented on post" });
-            // // }
 
-            // if (!post) {
-            //     return res.status(404).json({ msg: "No Post found" });
-            // }
+            if (comment) {
+                return res
+                    .status(400)
+                    .json({ msg: "Already Commented on post" });
+            }
 
-            // if (req.user.id === post.user_id) {
-            //     return res
-            //         .status(400)
-            //         .json({ msg: "Cannot comment on your own posts" });
-            // }
+            if (!post) {
+                return res.status(404).json({ msg: "No Post found" });
+            }
 
+            if (req.user.id === post.user_id) {
+                return res
+                    .status(400)
+                    .json({ msg: "Cannot comment on your own posts" });
+            }
+            console.log("Break Point 1");
             const newComment = new Comment({
-                comment: req.user.body,
+                comment: req.body,
                 postId: req.params.id,
                 userId: req.user.id,
             });
 
-            const commentRes = await newComment.save();
+            const saveComment = await newComment.save();
 
-            res.json(commentRes);
+            res.json(saveComment);
         } catch (error) {
             console.log(error);
             res.status(500).send("Internal Server Error");
