@@ -20,19 +20,13 @@ router.post("/follow/:id", auth, async (req, res) => {
             return res.status(400).json({ msg: "No User found" });
         }
 
-        if (req.user.id === user.id.toString()) {
-            return res
-                .status(400)
-                .json({ msg: "You Cannot be your own follower" });
+        if (
+            profile.followers.filter(
+                (follower) => follower.follower_id.toString() === req.user.id
+            ).length > 0
+        ) {
+            return res.status(400).json({ msg: "Already a Follwer" });
         }
-
-        // if (
-        //     profile.followers.filter(
-        //         (follower) => follower.follower_id.toString() === req.user.id
-        //     ).length > 0
-        // ) {
-        //     return res.status(400).json({ msg: "Already a Follwer" });
-        // }
 
         profile.followers.unshift({ follower_id: req.user.id });
 
