@@ -6,10 +6,10 @@ const { validationResult, check } = require('express-validator');
 const User = require('../models/User');
 const Profile = require('../models/Profile');
 
-//@route POST api/profile
-//@desc Add about profile
+//@route PUT api/profile
+//@desc Update profile
 //@access Private
-router.post(
+router.put(
 	'/',
 	[auth, [check('about', 'About cannot be Empty').not().isEmpty()]],
 	async (req, res) => {
@@ -18,12 +18,10 @@ router.post(
 			res.status(400).json({ errors: errors.array() });
 		}
 		try {
-			const profile = await Profile.findOneAndUpdate({
-				user_id: req.user.id,
-				about: req.body.about,
-			});
-
-			await profile.save();
+			const profile = await Profile.findOneAndUpdate(
+				{ user_id: req.user.id },
+				{ about: req.body.about }
+			);
 			res.json(profile);
 		} catch (err) {
 			console.error(err.message);
@@ -38,6 +36,7 @@ router.post(
 router.post('/follow/:id', auth, async (req, res) => {
 	try {
 		const followee = await Profile.findOne({ user_id: req.params.id });
+		const follower = await Profile.findOne({ user_id: req.user.id });
 
 		if (!followee) {
 			return res.status(400).json({ msg: 'No User found' });
@@ -53,7 +52,9 @@ router.post('/follow/:id', auth, async (req, res) => {
 
 		followee.followers.unshift({ _id: req.user.id });
 		await followee.save();
-		res.json(followee);
+		follower.following.unshift({ _id: req.params.id });
+		await follower.save();
+		res.json(follower);
 	} catch (error) {
 		console.log(error.message);
 		res.status(500).send('Internal Server Error');

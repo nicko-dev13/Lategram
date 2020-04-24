@@ -15,6 +15,11 @@ const ProfileSchema = mongoose.Schema({
 			_id: mongoose.Schema.Types.ObjectId,
 		},
 	],
+	following: [
+		{
+			_id: mongoose.Schema.Types.ObjectId,
+		},
+	],
 });
 
 module.exports = mongoose.model('profile', ProfileSchema);
