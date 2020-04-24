@@ -9,7 +9,6 @@ const Profile = require("../models/Profile");
 //@route POST api/profile/follow/:id
 //@desc Follow A User
 //@access Private
-<<<<<<< HEAD
 router.post(
     "/",
     [auth, [check("about", "About cannot be Empty").not().isEmpty()]],
@@ -68,7 +67,6 @@ router.post("/follow/:id", auth, async (req, res) => {
         console.log(error.message);
         res.status(500).send("Internal Server Error");
     }
-=======
 router.post('/follow/:id', auth, async (req, res) => {
 	// try {
 	// 	var getFollower = await User.findOne({ _id: req.params.id });
@@ -116,7 +114,6 @@ router.post('/follow/:id', auth, async (req, res) => {
 		console.log(error.message);
 		res.status(500).send('Error Updating Users');
 	}
->>>>>>> f81df74923a156f0b0fc96e978345807f7621e96
 });
 
 module.exports = router;
