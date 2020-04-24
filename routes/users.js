@@ -58,6 +58,7 @@ router.post(
 			// Creating Profile
 			newProfile = new Profile({
 				user_id: user.id,
+				about: 'Your Bio Here...',
 			});
 			newProfile.save();
 
