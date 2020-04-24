@@ -83,11 +83,14 @@ router.post(
 
 //@route GET api/users
 //@desc Gets All Users
-//@access Public
-router.get('/', async (req, res) => {
+//@access Private
+router.get('/', auth, async (req, res) => {
 	try {
 		var users = await User.find({});
-		res.send(users);
+		const filter = users.filter(
+			(user) => user._id.toString() !== req.user.id
+		);
+		res.send(filter);
 	} catch (error) {
 		console.log(error.message);
 		res.status(500).send('Error Fetching Users');
