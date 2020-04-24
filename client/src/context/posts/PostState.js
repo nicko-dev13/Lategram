@@ -3,7 +3,7 @@ import axios from 'axios';
 import PostContext from './postContext';
 import postReducer from './postReducer';
 
-import { ADD_POST, ADD_POST_ERROR, SET_LOADING } from '../types';
+import { ADD_POST, POST_ERROR, SET_LOADING, GET_POST } from '../types';
 
 const PostState = (props) => {
     const initialState = {
@@ -33,7 +33,22 @@ const PostState = (props) => {
             dispatch({ type: ADD_POST, payload: res.data });
         } catch (error) {
             dispatch({
-                type: ADD_POST_ERROR,
+                type: POST_ERROR,
+                payload: error.response.data.msg,
+            });
+        }
+    };
+
+    // Get Posts
+    const getPosts = async () => {
+        try {
+            setLoading();
+            const res = await axios.get('/api/posts');
+            console.log(res.data);
+            dispatch({ type: GET_POST, payload: res.data });
+        } catch (error) {
+            dispatch({
+                type: POST_ERROR,
                 payload: error.response.data.msg,
             });
         }
@@ -46,6 +61,7 @@ const PostState = (props) => {
                 loading: state.loading,
                 addPost,
                 setLoading,
+                getPosts,
             }}
         >
             {props.children}

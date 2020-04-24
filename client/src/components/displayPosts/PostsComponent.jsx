@@ -1,13 +1,24 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import PostContext from '../../context/posts/postContext';
 import postContext from '../../context/posts/postContext';
+import Spinner from '../layout/Spinner';
 
 function PostsComponent() {
     const postContext = useContext(PostContext);
 
-    const { post, loading } = postContext;
+    const { posts, loading, getPosts } = postContext;
 
-    return <div className='post-container'></div>;
+    useEffect(() => {
+        const get_Posts = async () => {
+            await getPosts();
+        };
+        get_Posts();
+        // eslint-disable-next-line
+    }, []);
+
+    return (
+        <div className='post-container'>{loading ? <Spinner /> : posts}</div>
+    );
 }
 
 export default PostsComponent;
