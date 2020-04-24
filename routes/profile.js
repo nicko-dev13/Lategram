@@ -1,9 +1,35 @@
 const express = require("express");
 const router = express.Router();
 const auth = require("../middlewares/auth");
+const { validationResult, check } = require("express-validator");
 
 const User = require("../models/User");
 const Profile = require("../models/Profile");
+
+//@route POST api/profile/follow/:id
+//@desc Follow A User
+//@access Private
+router.post(
+    "/",
+    [auth, [check("about", "About cannot be Empty").not().isEmpty()]],
+    async (req, res) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            res.status(400).json({ errors: errors.array() });
+        }
+        try {
+            const profile = new Profile({
+                about: about,
+            });
+
+            await profile.save();
+            res.json(profile);
+        } catch (err) {
+            console.error(err.message);
+            res.status(500).send("Internal Server Error");
+        }
+    }
+);
 
 //@route POST api/profile/follow/:id
 //@desc Follow A User
@@ -12,9 +38,13 @@ router.post("/follow/:id", auth, async (req, res) => {
     try {
         const user = await User.findById(req.params.id);
 
-        const profile = await Profile.find();
+        const profile = new Profile({
+            user_id: req.params.id,
+        });
 
-        console.log(profile);
+        await profile.save();
+
+        console.log(profile.followers);
 
         if (!user) {
             return res.status(400).json({ msg: "No User found" });
@@ -28,7 +58,7 @@ router.post("/follow/:id", auth, async (req, res) => {
             return res.status(400).json({ msg: "Already a Follwer" });
         }
 
-        profile.followers.unshift({ follower_id: req.user.id });
+        profile.followers.push(req.user.id);
 
         await profile.save();
 
