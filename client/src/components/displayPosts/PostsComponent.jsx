@@ -1,17 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import PostContext from '../../context/posts/postContext';
+import postContext from '../../context/posts/postContext';
 
 function PostsComponent() {
-	return (
-		<div className='post-container'>
-			<img src={require('./Pied_Piper.jpg')} alt='1' />
-			<img src={require('./Windows_Material.jpg')} alt='1' />
-			<img src={require('./Cod.jpg')} alt='1' />
-			<img src={require('./Texture_Blue.jpg')} alt='1' />
-			<img src={require('./Pied_Piper.jpg')} alt='1' />
-			<img src={require('./Windows_Material.jpg')} alt='1' />
-			<img src={require('./Texture_Blue.jpg')} alt='1' />
-		</div>
-	);
+    const postContext = useContext(PostContext);
+
+    const { post, loading } = postContext;
+
+    return <div className='post-container'></div>;
 }
 
 export default PostsComponent;
