@@ -1,14 +1,15 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const auth = require("../middlewares/auth");
-const { validationResult, check } = require("express-validator");
+const auth = require('../middlewares/auth');
+const { validationResult, check } = require('express-validator');
 
-const User = require("../models/User");
-const Profile = require("../models/Profile");
+const User = require('../models/User');
+const Profile = require('../models/Profile');
 
-//@route POST api/profile/follow/:id
-//@desc Follow A User
+//@route PUT api/profile
+//@desc Update profile
 //@access Private
+<<<<<<< HEAD
 router.post(
     "/",
     [auth, [check("about", "About cannot be Empty").not().isEmpty()]],
@@ -29,11 +30,33 @@ router.post(
             res.status(500).send("Internal Server Error");
         }
     }
+=======
+router.put(
+	'/',
+	[auth, [check('about', 'About cannot be Empty').not().isEmpty()]],
+	async (req, res) => {
+		const errors = validationResult(req);
+		if (!errors.isEmpty()) {
+			res.status(400).json({ errors: errors.array() });
+		}
+		try {
+			const profile = await Profile.findOneAndUpdate(
+				{ user_id: req.user.id },
+				{ about: req.body.about }
+			);
+			res.json(profile);
+		} catch (err) {
+			console.error(err.message);
+			res.status(500).send('Internal Server Error');
+		}
+	}
+>>>>>>> 59683cabc9521293cb9a06e71655c2c677e67f01
 );
 
 //@route POST api/profile/follow/:id
 //@desc Follow A User
 //@access Private
+<<<<<<< HEAD
 router.post("/follow/:id", auth, async (req, res) => {
     try {
         const user = await User.findById(req.params.id);
@@ -67,52 +90,33 @@ router.post("/follow/:id", auth, async (req, res) => {
         console.log(error.message);
         res.status(500).send("Internal Server Error");
     }
+=======
+>>>>>>> 59683cabc9521293cb9a06e71655c2c677e67f01
 router.post('/follow/:id', auth, async (req, res) => {
-	// try {
-	// 	var getFollower = await User.findOne({ _id: req.params.id });
-	// 	const follower = {
-	// 		follower_id: getFollower._id,
-	// 	};
-	// } catch (error) {
-	// 	console.log(error.message);
-	// 	res.status(500).send('No Such User Exists');
-	// }
 	try {
-		var user = await Profile.findOne({ user_id: req.user.id });
+		const followee = await Profile.findOne({ user_id: req.params.id });
+		const follower = await Profile.findOne({ user_id: req.user.id });
+
+		if (!followee) {
+			return res.status(400).json({ msg: 'No User found' });
+		}
+
 		if (
-			user.followers.filter(
-				(follower) => follower.follower_id == req.params.id
+			followee.followers.filter(
+				(follower) => follower._id.toString() === req.user.id
 			).length > 0
 		) {
-			return res.status(400).json({ msg: 'Already following' });
+			return res.status(400).json({ msg: 'Already a Follwer' });
 		}
-		if (user.user_id == req.params.id) {
-			return res.status(400).json({ msg: 'Cannot follow yourself' });
-		}
-		// check whether user is following themself
+
+		followee.followers.unshift({ _id: req.user.id });
+		await followee.save();
+		follower.following.unshift({ _id: req.params.id });
+		await follower.save();
+		res.json(follower);
 	} catch (error) {
 		console.log(error.message);
-		res.status(500).send('Error Updating Users');
-	}
-	try {
-		const follower = {
-			follower_id: req.params.id,
-		};
-		Profile.updateOne(
-			{ user_id: req.user.id },
-			{ $push: { followers: follower } },
-			function (err) {
-				if (err) {
-					console.log(err);
-				} else {
-					console.log('Updated Followers');
-					res.json('Follower Added');
-				}
-			}
-		);
-	} catch (error) {
-		console.log(error.message);
-		res.status(500).send('Error Updating Users');
+		res.status(500).send('Internal Server Error');
 	}
 });
 
