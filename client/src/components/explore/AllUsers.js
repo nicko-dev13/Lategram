@@ -1,6 +1,7 @@
 import React from 'react';
 import UserContext from '../../context/users/userContext';
 import { useContext, useEffect } from 'react';
+import UserItem from './UserItem';
 
 function AllUsers() {
 	const userContext = useContext(UserContext);
@@ -8,9 +9,16 @@ function AllUsers() {
 
 	useEffect(() => {
 		getUsers();
-	}, [users, getUsers]);
+		// eslint-disable-next-line
+	}, []);
 
-	return <div>{users}</div>;
+	return (
+		<div>
+			{users.map((user) => (
+				<UserItem key={user._id} user={user} />
+			))}
+		</div>
+	);
 }
 
 export default AllUsers;

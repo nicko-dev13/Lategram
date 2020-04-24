@@ -87,7 +87,7 @@ router.post(
 router.get('/', async (req, res) => {
 	try {
 		var users = await User.find({});
-		res.send(users.map((user) => user.name));
+		res.send(users);
 	} catch (error) {
 		console.log(error.message);
 		res.status(500).send('Error Fetching Users');
