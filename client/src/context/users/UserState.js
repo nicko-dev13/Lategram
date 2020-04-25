@@ -3,11 +3,12 @@ import UserContext from './userContext';
 import userReducer from './userReducer';
 import axios from 'axios';
 
-import { GET_USERS } from '../types';
+import { GET_USERS, GET_FOLLOWERS } from '../types';
 
 const UserState = (props) => {
 	const initialState = {
 		users: [],
+		following: [],
 	};
 
 	const [state, dispatch] = useReducer(userReducer, initialState);
@@ -23,7 +24,17 @@ const UserState = (props) => {
 		}
 	};
 
-	// Follow Ramesh
+	// Get Followers
+	const getFollowers = async () => {
+		try {
+			const res = await axios.get('/api/profile/following');
+			dispatch({ type: GET_FOLLOWERS, payload: res.data });
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
+	// Follow User by Id
 	const followUser = async (id) => {
 		const config = {
 			header: {
@@ -45,7 +56,13 @@ const UserState = (props) => {
 
 	return (
 		<UserContext.Provider
-			value={{ users: state.users, getUsers, followUser }}
+			value={{
+				users: state.users,
+				following: state.following,
+				getUsers,
+				getFollowers,
+				followUser,
+			}}
 		>
 			{props.children}
 		</UserContext.Provider>

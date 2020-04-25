@@ -1,23 +1,15 @@
-import React, { useContext, useEffect } from 'react';
-import PostContext from '../../context/posts/postContext';
-import postContext from '../../context/posts/postContext';
-import Spinner from '../layout/Spinner';
+import React from 'react';
 
-function PostsComponent() {
-    const postContext = useContext(PostContext);
-
-    const { posts, loading, getPosts } = postContext;
-
-    useEffect(() => {
-        const get_Posts = async () => {
-            await getPosts();
-        };
-        get_Posts();
-        // eslint-disable-next-line
-    }, []);
+function PostsComponent({ post: { postContent, likes } }) {
+    const onLike = () => {
+        console.log('OnLike');
+    };
 
     return (
-        <div className='post-container'>{loading ? <Spinner /> : posts}</div>
+        <div className='post-container'>
+            <h4>{postContent}</h4>
+            <button onClick={onLike}>Likes {likes.length}</button>
+        </div>
     );
 }
 

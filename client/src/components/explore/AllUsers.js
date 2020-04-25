@@ -5,18 +5,27 @@ import UserItem from './UserItem';
 
 function AllUsers() {
 	const userContext = useContext(UserContext);
-	const { users, getUsers } = userContext;
+	const { users, following, getUsers, getFollowers } = userContext;
 
 	useEffect(() => {
 		getUsers();
+		getFollowers();
 		// eslint-disable-next-line
-	}, []);
+	}, [users, following]);
+
+	const others = users.filter(
+		(o) => following.map((i) => i._id).indexOf(o._id) == -1
+	);
 
 	return (
 		<div>
-			{users.map((user) => (
-				<UserItem key={user._id} user={user} />
-			))}
+			{users.map((user) =>
+				following.map((f) => f._id).indexOf(user._id) == -1 ? (
+					<UserItem key={user.id} user={user} button="Follow" />
+				) : (
+					<UserItem key={user.id} user={user} button="Unfollow" />
+				)
+			)}
 		</div>
 	);
 }

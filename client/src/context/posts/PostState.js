@@ -32,9 +32,10 @@ const PostState = (props) => {
             console.log(res.data);
             dispatch({ type: ADD_POST, payload: res.data });
         } catch (error) {
+            console.log(error);
             dispatch({
                 type: POST_ERROR,
-                payload: error.response.data.msg,
+                payload: error.msg,
             });
         }
     };
@@ -47,12 +48,28 @@ const PostState = (props) => {
             console.log(res.data);
             dispatch({ type: GET_POST, payload: res.data });
         } catch (error) {
+            console.log(error);
             dispatch({
                 type: POST_ERROR,
-                payload: error.response.data.msg,
+                payload: error.msg,
             });
         }
     };
+
+    // const likePost = async (id) => {
+
+    //     const config ={
+    //         headers: {
+    //             'Content-type': 'application/json'
+    //         }
+    //     }
+
+    //     try{
+    //         setLoading();
+    //         const res = await axios.post(`/api/post/like/${id}`, config)
+
+    //     }
+    // }
 
     return (
         <PostContext.Provider
