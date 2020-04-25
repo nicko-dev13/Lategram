@@ -1,26 +1,41 @@
 # Lategram
- Instagram Clone 
 
- # For installation on server side
+Instagram Clone
+
+## SETUP
+
+## For installation on server side
+
+in root
+
+```
 npm install
+```
 
-# For installation on client side
-cd to client 
+## For installation on client side
+
+cd to client
+
+```
 npm install
+```
 
-# OR
+## For the backend Server
 
- # For client npm install
-from root
-npm run clientinstall
-
- # For running the Server
+```
 npm run server
+```
 
- # For running the react Server
+## For running the react Server
+
+cd .. (root of the app)
+
+```
 npm run client
+```
 
- # For running the Node Server as well as React Server
+## For running the Node Server as well as React Server
+
+```
 npm run dev
-
-# Writing comments is compulsory
+```

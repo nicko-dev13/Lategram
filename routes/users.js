@@ -5,8 +5,10 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const { check, validationResult } = require('express-validator');
 const config = require('config');
+const auth = require('../middlewares/auth');
 
 const User = require('../models/User');
+const Profile = require('../models/Profile');
 
 //@route POST api/users
 //@desc Registers a user
@@ -17,7 +19,10 @@ router.post(
 		//Express vallidator for checking the fields
 		check('name', 'Please Enter a Name').not().isEmpty(),
 		check('email', 'Please enter a valid email').isEmail(),
-		check('password', 'Please enter a password of 6 or more characters').isLength({ min: 6 })
+		check(
+			'password',
+			'Please enter a password of 6 or more characters'
+		).isLength({ min: 6 }),
 	],
 	async (req, res) => {
 		const errors = validationResult(req);
@@ -31,9 +36,7 @@ router.post(
 		try {
 			//Checking if the email already exists
 			let user = await User.findOne({ email: email });
-			
-			
-			
+
 			//if exists throwing error with status 400
 			if (user) {
 				res.status(400).json({ msg: 'User already exists' });
@@ -42,19 +45,28 @@ router.post(
 			user = new User({
 				name,
 				email,
-				password
+				password,
 			});
+
 			//Creating salt for password
 			const salt = await bcrypt.genSalt(10);
 			//hasing password
 			user.password = await bcrypt.hash(password, salt);
 			//Saving to database
 			await user.save();
+
+			// Creating Profile
+			newProfile = new Profile({
+				user_id: user.id,
+				about: 'Your Bio Here...',
+			});
+			newProfile.save();
+
 			//assigning a payload for jwt
 			const payload = {
 				user: {
-					id: user.id
-				}
+					id: user.id,
+				},
 			};
 			//getting a token through jwt sign
 			jwt.sign(payload, config.get('jwtSecret'), (err, token) => {
@@ -68,5 +80,21 @@ router.post(
 		}
 	}
 );
+
+//@route GET api/users
+//@desc Gets All Users
+//@access Private
+router.get('/', auth, async (req, res) => {
+	try {
+		var users = await User.find({});
+		const filter = users.filter(
+			(user) => user._id.toString() !== req.user.id
+		);
+		res.send(filter);
+	} catch (error) {
+		console.log(error.message);
+		res.status(500).send('Error Fetching Users');
+	}
+});
 
 module.exports = router;
