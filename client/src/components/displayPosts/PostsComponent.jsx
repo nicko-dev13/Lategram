@@ -1,6 +1,4 @@
-import React, { useContext, useEffect } from 'react';
-import PostContext from '../../context/posts/postContext';
-import postContext from '../../context/posts/postContext';
+import React from 'react';
 
 function PostsComponent({ post: { postContent, likes } }) {
     const onLike = () => {
