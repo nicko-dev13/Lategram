@@ -7,7 +7,7 @@ export default (state, action) => {
         case ADD_POST:
             return {
                 ...state,
-                posts: action.payload,
+                posts: [action.payload, state.posts],
                 loading: false,
             };
         case GET_POST:

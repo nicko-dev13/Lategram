@@ -32,9 +32,10 @@ const PostState = (props) => {
             console.log(res.data);
             dispatch({ type: ADD_POST, payload: res.data });
         } catch (error) {
+            console.log(error);
             dispatch({
                 type: POST_ERROR,
-                payload: error.response.data.msg,
+                payload: error.response.msg,
             });
         }
     };
@@ -47,9 +48,10 @@ const PostState = (props) => {
             console.log(res.data);
             dispatch({ type: GET_POST, payload: res.data });
         } catch (error) {
+            console.log(error);
             dispatch({
                 type: POST_ERROR,
-                payload: error.response.data.msg,
+                payload: error.msg,
             });
         }
     };
