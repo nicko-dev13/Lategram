@@ -11,7 +11,7 @@ function AllUsers() {
 		getUsers();
 		getFollowers();
 		// eslint-disable-next-line
-	}, []);
+	}, [users, following]);
 
 	const others = users.filter(
 		(o) => following.map((i) => i._id).indexOf(o._id) == -1
@@ -19,9 +19,13 @@ function AllUsers() {
 
 	return (
 		<div>
-			{users.map((user) => (
-				<UserItem key={user.id} user={user} button="Unfollow" />
-			))}
+			{users.map((user) =>
+				following.map((f) => f._id).indexOf(user._id) == -1 ? (
+					<UserItem key={user.id} user={user} button="Follow" />
+				) : (
+					<UserItem key={user.id} user={user} button="Unfollow" />
+				)
+			)}
 		</div>
 	);
 }
