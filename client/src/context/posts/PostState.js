@@ -35,7 +35,7 @@ const PostState = (props) => {
             console.log(error);
             dispatch({
                 type: POST_ERROR,
-                payload: error.response.msg,
+                payload: error.msg,
             });
         }
     };
@@ -55,6 +55,21 @@ const PostState = (props) => {
             });
         }
     };
+
+    // const likePost = async (id) => {
+
+    //     const config ={
+    //         headers: {
+    //             'Content-type': 'application/json'
+    //         }
+    //     }
+
+    //     try{
+    //         setLoading();
+    //         const res = await axios.post(`/api/post/like/${id}`, config)
+
+    //     }
+    // }
 
     return (
         <PostContext.Provider
