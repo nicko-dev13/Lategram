@@ -1,6 +1,8 @@
 //Posts Model
 const mongoose = require("mongoose");
 
+// require('../models/Comments');
+// const param= mongoose.model('comments')
 
 const commentSchema = mongoose.Schema({
 	username: {
@@ -34,7 +36,7 @@ const PostSchema = mongoose.Schema({
 		type: Date,
 		default: Date.now
     },
-    comment:[commentSchema]
+    Comment:[commentSchema]
    
 });
 

@@ -57,4 +57,19 @@ router.put('/:id',async (req, res) => {
 		 
 });
 
+
+router.delete('/:id',async (req, res) => {
+	const result= Comment.findOneAndRemove(
+		{
+			_id:req.body.id
+		}
+	).then(doc=>{
+			res.json(result);
+
+		}).catch(err=>{
+			 console.log(err);
+		 })
+		 
+});
+
 module.exports = router;

@@ -15,4 +15,4 @@ const commentSchema = mongoose.Schema({
 	}
 });
 
-module.exports = mongoose.model('comment', commentSchema);
+module.exports = mongoose.model('comments', commentSchema);
