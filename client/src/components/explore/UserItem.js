@@ -3,10 +3,10 @@ import UserContext from '../../context/users/userContext';
 
 function UserItem({ user, button }) {
 	const userContext = useContext(UserContext);
-	const { followUser } = userContext;
+	const { followUser, unFollowUser } = userContext;
 
 	const onClick = () => {
-		followUser(user._id);
+		button == 'Follow' ? followUser(user._id) : unFollowUser(user._id);
 	};
 	return (
 		<div>
