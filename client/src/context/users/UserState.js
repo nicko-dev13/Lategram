@@ -54,6 +54,26 @@ const UserState = (props) => {
 		}
 	};
 
+	// Unfollow User by Id
+	const unFollowUser = async (id) => {
+		const config = {
+			header: {
+				'Content-Type': 'application/json',
+			},
+		};
+		try {
+			const res = await axios.post(
+				`api/profile/unfollow/${id}`,
+				id,
+				config
+			);
+			console.log('UNFOLLOWED USING REACT');
+		} catch (error) {
+			//////////////////// ADD DISPATCH HERE
+			console.log(error);
+		}
+	};
+
 	return (
 		<UserContext.Provider
 			value={{
@@ -62,6 +82,7 @@ const UserState = (props) => {
 				getUsers,
 				getFollowers,
 				followUser,
+				unFollowUser,
 			}}
 		>
 			{props.children}
