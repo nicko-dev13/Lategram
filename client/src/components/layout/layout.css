@@ -1,12 +1,11 @@
-button img{
-height:30px;
+button img {
+	height: 30px;
 }
-button{
-    border:0;
-    background-color:white;
-
+button {
+	border: 0;
+	background-color: white;
 }
-.post-container{
+/* .post-container{
     height: 30vh;
     width:10px;
     display: flex;
@@ -21,27 +20,27 @@ button{
 }
 
 .post-container:hover{
-    background-color: black;
+    background-color: blue;
     
+} */
+span {
+	display: inline;
+	margin: 10px;
 }
-span{
-    display: inline;
-    margin: 10px;
-}
-p{
-    color:rgb(87, 81, 81);
-    display: inline;
+p {
+	color: rgb(87, 81, 81);
+	display: inline;
 }
 
-.flexo{
-    display: flex;
-    flex-direction: column;
+.flexo {
+	display: flex;
+	flex-direction: column;
 }
-#btn{
-    background-color: white;
-    color:white;
+#btn {
+	background-color: white;
+	color: white;
 }
-#btn:hover{
-    background-color: black;
-    color:white;
+#btn:hover {
+	background-color: black;
+	color: white;
 }

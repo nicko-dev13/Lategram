@@ -1,249 +1,270 @@
 @import url('https://fonts.googleapis.com/css?family=Grand+Hotel&display=swap');
 
 body {
-    --grey: #fafafa;
-    margin: 0;
-    font-family: sans-serif;
-    a {
-        text-decoration: none;
-    }
-    a:visited {
-        color: #0095f6;
-    }
+	--grey: #fafafa;
+	margin: 0;
+	font-family: sans-serif;
+	a {
+		text-decoration: none;
+	}
+	a:visited {
+		color: #0095f6;
+	}
 }
 
 // Reusable COMPONENTS //
 .logo-full {
-    margin: 0;
-    color: black;
-    font-size: 4em;
-    font-family: 'Grand Hotel', cursive;
+	margin: 0;
+	color: black;
+	font-size: 4em;
+	font-family: 'Grand Hotel', cursive;
 }
 
 .user-image {
-    background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
-    border-radius: 1500px;
-    height: 50px;
-    width: 50px;
-    align-self: center; 
-    img {
-        position: relative;
-        left: 1.8%;
-        top: 2.3%;
-        width: 95%;
-        border-radius: 500px;
-        border: 0.1em solid white;
-    }
+	background: linear-gradient(
+		45deg,
+		#f09433 0%,
+		#e6683c 25%,
+		#dc2743 50%,
+		#cc2366 75%,
+		#bc1888 100%
+	);
+	border-radius: 1500px;
+	height: 50px;
+	width: 50px;
+	align-self: center;
+	img {
+		position: relative;
+		left: 1.8%;
+		top: 2.3%;
+		width: 95%;
+		border-radius: 500px;
+		border: 0.1em solid white;
+	}
 }
 
 ////
-.form-page{
-    background: var(--grey);
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
+.form-page {
+	background: var(--grey);
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
 }
 
 .form-container {
-    text-align: center;
-    background: white;
-    height: 70vh;
-    width: 20%;
-    min-width: 340px;
-    margin: 50px auto;
-    margin-bottom: 20px;
-    padding: 30px;
-    border: 1px solid rgb(218, 218, 218);
-    color: #8e8e8e;
-    form {
-        width: 100%;
-        font-size: 15px;
-        h4 {
-            font-size: 1.1em;
-        }
-        hr {
-            border: 0;
-            border-top: 1px solid rgb(218, 218, 218);
-        }
-        input {
-            background: var(--grey);
-            width: 100%;
-            height: 30px;
-            margin-top: 10px;
-            border: 1px solid rgb(218, 218, 218);
-            padding-left: 10px;
-            border-radius: 4px;
-        }
-        button {
-            width: 100%;
-            height: 30px;
-            background: #0095f6;
-            color: white;
-            margin: 20px 0;
-            border: none;
-            border-radius: 4px;
-        }
-    }
+	text-align: center;
+	background: white;
+	height: 70vh;
+	width: 20%;
+	min-width: 340px;
+	margin: 50px auto;
+	margin-bottom: 20px;
+	padding: 30px;
+	border: 1px solid rgb(218, 218, 218);
+	color: #8e8e8e;
+	form {
+		width: 100%;
+		font-size: 15px;
+		h4 {
+			font-size: 1.1em;
+		}
+		hr {
+			border: 0;
+			border-top: 1px solid rgb(218, 218, 218);
+		}
+		input {
+			background: var(--grey);
+			width: 100%;
+			height: 30px;
+			margin-top: 10px;
+			border: 1px solid rgb(218, 218, 218);
+			padding-left: 10px;
+			border-radius: 4px;
+		}
+		button {
+			width: 100%;
+			height: 30px;
+			background: #0095f6;
+			color: white;
+			margin: 20px 0;
+			border: none;
+			border-radius: 4px;
+		}
+	}
 }
 
 .alt-link {
-    background: white;
-    width: 20%;
-    min-width: 400px;
-    border: 1px solid rgb(218, 218, 218);
-    margin: 0 auto;
-    padding: 15px 0 10px 0;
-    text-align: center;
+	background: white;
+	width: 20%;
+	min-width: 400px;
+	border: 1px solid rgb(218, 218, 218);
+	margin: 0 auto;
+	padding: 15px 0 10px 0;
+	text-align: center;
 }
-
 
 // Nav //
 
 .nav {
-    padding: 5px 0;
-    background: white;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    border-bottom: 1px solid rgb(218, 218, 218);
+	padding: 5px 0;
+	background: white;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	border-bottom: 1px solid rgb(218, 218, 218);
 
-    input {
-        padding: 5px;
-        height: 60%;
-        align-self: center;
-        border: 1px solid rgb(218, 218, 218);
-        border-radius: 4px;
-        text-align: center;
-    }
+	input {
+		padding: 5px;
+		height: 60%;
+		align-self: center;
+		border: 1px solid rgb(218, 218, 218);
+		border-radius: 4px;
+		text-align: center;
+	}
 }
 
 // UserPAGE //
 
 .user-page {
-    background:var(--grey);
+	background: var(--grey);
 }
 
 // Userinfo //
 
 .user-info {
-    .info-header {
-        display: flex;
-        margin: 0;
-        padding: 50px 0;
-        justify-content: center;
-        width: 100%;
-        font-size: 1.2vw;
-        border-bottom: 1px solid rgb(218, 218, 218);
-        .info {
-            align-self: center;
-            margin-left: 100px;
-            span {
-                padding-right: 20px;;
-            }
-        }
-    }
+	.info-header {
+		display: flex;
+		margin: 0;
+		padding: 50px 0;
+		justify-content: center;
+		width: 100%;
+		font-size: 1.2vw;
+		border-bottom: 1px solid rgb(218, 218, 218);
+		.info {
+			align-self: center;
+			margin-left: 100px;
+			span {
+				padding-right: 20px;
+			}
+		}
+	}
 }
 
 // POSTS //
 
-// .post-container {
-//     display: grid;
-//     margin: 10px 0;
-//     padding: 0 10%;
-//     grid-template-columns: 1fr 1fr 1fr;
-//     justify-items: center;
-//     min-width: 970px;
-//     overflow: hidden;
-//     img {
-//         padding: 15px;
-//         width: 90%;
-//         max-width: 500px;
-//         height: 20vw;
-//         object-fit: cover;    
-//     }
-//     img:hover {
-//         opacity: 0.5;
-//     }
-// }
+.post-container {
+	display: grid;
+	margin: 10px 0;
+	padding: 0 10%;
+	grid-template-columns: 1fr 1fr 1fr;
+	justify-items: center;
+	min-width: 970px;
+	overflow: hidden;
+	.post {
+		position: relative;
+		text-align: center;
+		padding: 15px;
+		width: 90%;
+		max-width: 500px;
+		height: 20vw;
 
-// /// VIEW POST ///
+		#btn {
+			align-self: start;
+			background: #000;
+			position: absolute;
+			top: 150px;
+			left: 150px;
+			margin-right: 50px;
+		}
+		#btn:hover {
+			background: #fff;
+			color: #000;
+		}
+	}
+	.post:hover {
+		background: rgba(0, 0, 0, 0.445);
+	}
+}
+
+/// VIEW POST ///
 // .view-post {
-//     position: absolute;
-//     top: 0;
-//     background: rgba(0, 0, 0, 0.493);
-//     width: 100%;
-//     height: 100vw;
-//     .view-post-container {
-//         margin: 80px auto;
-//         background: white;
-//         width: 70%;
-//         max-width: 1000px;
-//         height: 650px;
-//         display: grid;
-//         grid-template-columns: 2fr 1fr;
-//         grid-template-rows: 1fr 4fr 1.2fr 1fr;
-//         .image{ 
-//             border-right: 1px solid rgb(218, 218, 218);
-//             grid-column-start: 1;
-//             grid-column-end: 2;
-//             grid-row-start: 1;
-//             grid-row-end: 5;
-//             img {
-//                 width: 20vw;
-//             }
-//         }
-//         .author {
-//             padding: 10px;
-//             display: flex;
-//             align-self: flex-start;
-//             border-bottom: 1px solid rgb(218, 218, 218);
-//             grid-column-start: 2;
-//             grid-column-end: 3;
-//             grid-row-start: 1;
-//             grid-row-end: 2;
-//             span {
-//                 margin: 0 10px;
-//                 align-self: center;
-//             }
-//         }
-//         .comments {
-//             padding: 10px;
-//             font-size: 1vw;
-//             border-bottom: 1px solid rgb(218, 218, 218);
-//             grid-column-start: 2;
-//             grid-column-end: 3;
-//             grid-row-start: 2;
-//             grid-row-end: 3;
-//         }
-        
-//     }
+// 	position: absolute;
+// 	top: 0;
+// 	background: rgba(0, 0, 0, 0.493);
+// 	width: 100%;
+// 	height: 100vw;
+// 	.view-post-container {
+// 		margin: 80px auto;
+// 		background: white;
+// 		width: 70%;
+// 		max-width: 1000px;
+// 		height: 650px;
+// 		display: grid;
+// 		grid-template-columns: 2fr 1fr;
+// 		grid-template-rows: 1fr 4fr 1.2fr 1fr;
+// 		.image {
+// 			border-right: 1px solid rgb(218, 218, 218);
+// 			grid-column-start: 1;
+// 			grid-column-end: 2;
+// 			grid-row-start: 1;
+// 			grid-row-end: 5;
+// 			img {
+// 				width: 20vw;
+// 			}
+// 		}
+// 		.author {
+// 			padding: 10px;
+// 			display: flex;
+// 			align-self: flex-start;
+// 			border-bottom: 1px solid rgb(218, 218, 218);
+// 			grid-column-start: 2;
+// 			grid-column-end: 3;
+// 			grid-row-start: 1;
+// 			grid-row-end: 2;
+// 			span {
+// 				margin: 0 10px;
+// 				align-self: center;
+// 			}
+// 		}
+// 		.comments {
+// 			padding: 10px;
+// 			font-size: 1vw;
+// 			border-bottom: 1px solid rgb(218, 218, 218);
+// 			grid-column-start: 2;
+// 			grid-column-end: 3;
+// 			grid-row-start: 2;
+// 			grid-row-end: 3;
+// 		}
+// 	}
 // }
-
 
 //// MOBILE ////
 
 @media only screen and (max-width: 970px) {
-    .nav {
-        input {
-            display: none;
-        }
-    }
+	.nav {
+		input {
+			display: none;
+		}
+	}
 
-    .user-info {
-        .info-header {
-            font-size: 2vw;
-            .info {
-                margin-left: 50px;
-            }
-        }
-    }
+	.user-info {
+		.info-header {
+			font-size: 2vw;
+			.info {
+				margin-left: 50px;
+			}
+		}
+	}
 
-    .post-container {
-        padding: 0;
-        min-width: 200px;
-        img {
-            padding: 0;
-            width: 100%;
-        }
-    }
+	.post-container {
+		padding: 0;
+		min-width: 200px;
+		font-size: 0.7em;
+		.post {
+			#btn {
+				top: 60px;
+				left: 120px;
+			}
+		}
+	}
 }
