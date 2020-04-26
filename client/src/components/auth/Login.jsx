@@ -2,6 +2,8 @@ import React, { useContext, useState, useEffect } from 'react';
 import Logofull from './Logofull';
 import AuthContext from '../../context/auth/authContext';
 import { Link } from 'react-router-dom';
+import './auth.css';
+
 
 const Login = (props) => {
 	const authContext = useContext(AuthContext);
@@ -40,7 +42,12 @@ const Login = (props) => {
 	const { email, password } = user;
 
 	return (
-		<div className="form-page">
+		<div className="dabba">
+					<div className="left">
+						<img src={require('./Capture.PNG')} alt=""/>
+					</div>
+					<div className="right">
+					<div className="form-page">
 			<div className="form-container">
 				<form onSubmit={onSubmit}>
 					<Logofull fontSize="70px" />
@@ -66,6 +73,9 @@ const Login = (props) => {
 				</p>
 			</div>
 		</div>
+					</div>
+		</div>
+		
 	);
 };
 

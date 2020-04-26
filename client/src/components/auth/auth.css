@@ -1,0 +1,33 @@
+.flexi{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+
+}
+button{
+    cursor: pointer;
+}
+h3{
+    font-weight: 10;
+    font-size: 15px;
+    color:rgb(161, 156, 156);
+}
+.flexi1{
+    display: flex;
+    flex-direction: row;
+}
+.flexi1 img{
+height: 40px;
+width: 100px;
+margin-right: 8px;
+}
+.left img{
+    height: 80vh;
+    width:50vh;
+    margin: 50px 200px;
+}
+
+.dabba{
+    display: flex;
+}

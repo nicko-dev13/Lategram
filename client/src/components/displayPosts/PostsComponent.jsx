@@ -7,8 +7,11 @@ function PostsComponent({ post: { postContent, likes } }) {
 
     return (
         <div className='post-container'>
-            <h4>{postContent}</h4>
-            <button onClick={onLike}>Likes {likes.length}</button>
+            <div className="flexo">
+                    <div><h4>{postContent}</h4></div> 
+                    <div><button id="btn" onClick={onLike}>Likes {likes.length}</button></div> 
+            </div>
+                   
         </div>
     );
 }

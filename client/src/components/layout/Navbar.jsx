@@ -2,6 +2,8 @@ import React, { useContext } from 'react';
 import Logofull from '../auth/Logofull';
 import Userimage from '../user/Userimage';
 import AuthContext from '../../context/auth/authContext';
+import './layout.css'
+
 
 function Navbar() {
 	const authContext = useContext(AuthContext);
@@ -15,9 +17,10 @@ function Navbar() {
 		<div>
 			<nav className="nav">
 				<Logofull fontSize="40px" />
-				<button onClick={logOut}>LogOUT</button>
 				<input placeholder="Search" />
 				<Userimage width="50px" />
+				<button onClick={logOut}><img src={require('./logout.png')}  alt=""/></button>
+
 			</nav>
 		</div>
 	);

@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import Logofull from './Logofull';
 import AuthContext from '../../context/auth/authContext';
 import { Link } from 'react-router-dom';
+import './auth.css';
 
 const Register = (props) => {
 	const authContext = useContext(AuthContext);
@@ -67,8 +68,20 @@ const Register = (props) => {
 				<p>
 					Have an account? <Link to="/login">Login</Link>
 				</p>
+				</div>
+
+
+				<div className="flexi">
+								<div>
+									<h3>Get the App</h3>
+								</div>
+
+								<div className="flexi1" >
+										<div><img src={require('./ok.png')} alt="download"/></div>
+										<div><img src={require('./ok2.png')} alt="download"/></div>
+								</div>
+				</div>
 			</div>
-		</div>
 	);
 };
 

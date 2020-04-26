@@ -23,21 +23,18 @@ function Userinfo() {
     return (
         <div className='user-info'>
             <div className='info-header'>
-                <Userimage width='15vw' />
+                <Userimage width='5vw' />
                 <div className='info'>
-                    <p>{user.name}</p>
+                    <p>{user.name}</p><br/><br/>
                     <span>
-                        {' '}
-                        <b>99</b> posts{' '}
+                        <b>99</b><p>posts{' '}</p> 
                     </span>
                     <span>
-                        {' '}
-                        <b>420</b> followers{' '}
+                        <b>420</b><p>followers{' '}</p> 
                     </span>
                     <span>
-                        {' '}
-                        <b>69</b> following{' '}
-                    </span>
+                        <b>69</b><p> following{' '}</p>
+                    </span><br/><br/>
                     <p>Also known as pako and cko and mako and kako and taco</p>
                 </div>
             </div>
