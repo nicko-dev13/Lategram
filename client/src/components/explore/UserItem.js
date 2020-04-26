@@ -9,10 +9,11 @@ function UserItem({ user, button }) {
 		button == 'Follow' ? followUser(user._id) : unFollowUser(user._id);
 	};
 	return (
-		<div>
+		<div className="user-item">
 			<span>{user.name}</span>
-			<button onClick={onClick}>{button}</button>
-			<div className="empty">----------------------</div>
+			<button onClick={onClick} className={button}>
+				{button}
+			</button>
 		</div>
 	);
 }

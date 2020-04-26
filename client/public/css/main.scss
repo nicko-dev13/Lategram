@@ -186,6 +186,50 @@ body {
 	}
 }
 
+// USERS PAGE //
+.users-container {
+	margin: 20px auto;
+	width: 50%;
+	max-width: 500px;
+	border-radius: 5px;
+	display: flex;
+	flex-direction: column;
+	padding: 1px;
+	min-height: 90vh;
+	border: 1px solid rgb(231, 231, 231);
+
+	.user-item {
+		display: grid;
+		grid-template-columns: 2fr 1fr;
+		background: white;
+		padding: 10px 0;
+		&:hover {
+			background: rgb(243, 243, 243);
+		}
+		button {
+			align-self: center;
+			justify-self: center;
+			width: 80%;
+			height: 80%;
+			border-radius: 5px;
+			&:hover {
+				box-shadow: 1px 1px 5px rgb(177, 177, 177);
+			}
+			&:focus {
+				outline: none;
+			}
+		}
+		button.Follow {
+			background: rgb(68, 118, 255);
+			color: white;
+		}
+
+		button.Unfollow {
+			background: rgb(187, 187, 187);
+		}
+	}
+}
+
 /// VIEW POST ///
 // .view-post {
 // 	position: absolute;

@@ -18,7 +18,7 @@ function AllUsers() {
 	);
 
 	return (
-		<div>
+		<div className="users-container">
 			{users.map((user) =>
 				following.map((f) => f._id).indexOf(user._id) == -1 ? (
 					<UserItem key={user.id} user={user} button="Follow" />
