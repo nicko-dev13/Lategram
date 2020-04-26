@@ -11,6 +11,7 @@ export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 ////  USERS
 export const GET_USERS = 'GET_USERS';
 export const GET_FOLLOWERS = 'GET_FOLLOWERS';
+export const GET_FEED = 'GET_FEED';
 
 ////    POSTS
 export const ADD_POST = 'ADD_POST';

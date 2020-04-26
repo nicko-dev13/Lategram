@@ -13,10 +13,6 @@ function AllUsers() {
 		// eslint-disable-next-line
 	}, [users, following]);
 
-	const others = users.filter(
-		(o) => following.map((i) => i._id).indexOf(o._id) == -1
-	);
-
 	return (
 		<div className="users-container">
 			{users.map((user) =>

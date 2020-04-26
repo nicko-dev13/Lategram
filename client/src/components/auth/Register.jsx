@@ -16,19 +16,19 @@ const Register = (props) => {
 			}
 		},
 		//eslint-disable-next-line
-		[ isAuthenticated, props.history ]
+		[isAuthenticated, props.history]
 	);
 
-	const [ user, setUser ] = useState({
+	const [user, setUser] = useState({
 		name: '',
 		email: '',
-		password: ''
+		password: '',
 	});
 
 	const onChange = (e) =>
 		setUser({
 			...user,
-			[e.target.name]: e.target.value
+			[e.target.name]: e.target.value,
 		});
 
 	const onSubmit = (e) => {
@@ -36,7 +36,7 @@ const Register = (props) => {
 		register({
 			name: name,
 			email: email,
-			password: password
+			password: password,
 		});
 	};
 
@@ -49,8 +49,20 @@ const Register = (props) => {
 					<Logofull fontSize="70px" />
 					<h4>Sign up to see photos and videos from your friends.</h4>
 					<hr />
-					<input type="email" name="email" onChange={onChange} placeholder="Enter Email" value={email} />
-					<input type="text" name="name" onChange={onChange} placeholder="First Name" value={name} />
+					<input
+						type="email"
+						name="email"
+						onChange={onChange}
+						placeholder="Enter Email"
+						value={email}
+					/>
+					<input
+						type="text"
+						name="name"
+						onChange={onChange}
+						placeholder="First Name"
+						value={name}
+					/>
 					<input
 						type="password"
 						name="password"
@@ -60,7 +72,8 @@ const Register = (props) => {
 					/>
 					<button type="submit">Sign Up</button>
 					<p>
-						By signing up, you agree to our <b>Terms, Data Policy</b> and <b>Cookies Policy .</b>{' '}
+						By signing up, you agree to our{' '}
+						<b>Terms, Data Policy</b> and <b>Cookies Policy .</b>{' '}
 					</p>
 				</form>
 			</div>
@@ -68,20 +81,23 @@ const Register = (props) => {
 				<p>
 					Have an account? <Link to="/login">Login</Link>
 				</p>
+			</div>
+
+			<div className="flexi">
+				<div>
+					<h3>Get the App</h3>
 				</div>
 
-
-				<div className="flexi">
-								<div>
-									<h3>Get the App</h3>
-								</div>
-
-								<div className="flexi1" >
-										<div><img src={require('./ok.png')} alt="download"/></div>
-										<div><img src={require('./ok2.png')} alt="download"/></div>
-								</div>
+				<div className="flexi1">
+					<div>
+						<img src={require('./ok.png')} alt="download" />
+					</div>
+					<div>
+						<img src={require('./ok2.png')} alt="download" />
+					</div>
 				</div>
 			</div>
+		</div>
 	);
 };
 

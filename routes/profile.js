@@ -3,7 +3,7 @@ const router = express.Router();
 const auth = require('../middlewares/auth');
 const { validationResult, check } = require('express-validator');
 
-const User = require('../models/User');
+const Post = require('../models/Post');
 const Profile = require('../models/Profile');
 
 //@route PUT api/profile
@@ -115,6 +115,27 @@ router.post('/unfollow/:id', auth, async (req, res) => {
 		);
 		console.log('Updated');
 		res.json(userToUnfollow);
+	} catch (error) {
+		console.log(error.message);
+		res.status(500).send('Internal Server Error');
+	}
+});
+
+//@route GET api/profile/feed
+//@desc Get User's Feed
+//@access Private
+router.get('/feed', auth, async (req, res) => {
+	try {
+		const user = await Profile.findOne({ user_id: req.user.id });
+		const following = user.following;
+		const allPosts = await Post.find({});
+		const postsOfFollowing = allPosts.filter(
+			(post) =>
+				following
+					.map((followee) => followee._id)
+					.indexOf(post.user_id) == 1
+		);
+		res.json(postsOfFollowing);
 	} catch (error) {
 		console.log(error.message);
 		res.status(500).send('Internal Server Error');

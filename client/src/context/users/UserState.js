@@ -3,12 +3,13 @@ import UserContext from './userContext';
 import userReducer from './userReducer';
 import axios from 'axios';
 
-import { GET_USERS, GET_FOLLOWERS } from '../types';
+import { GET_USERS, GET_FOLLOWERS, GET_FEED } from '../types';
 
 const UserState = (props) => {
 	const initialState = {
 		users: [],
 		following: [],
+		feed: [],
 	};
 
 	const [state, dispatch] = useReducer(userReducer, initialState);
@@ -29,6 +30,16 @@ const UserState = (props) => {
 		try {
 			const res = await axios.get('/api/profile/following');
 			dispatch({ type: GET_FOLLOWERS, payload: res.data });
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
+	// Get Feed
+	const getFeed = async () => {
+		try {
+			const res = await axios.get('/api/profile/feed');
+			dispatch({ type: GET_FEED, payload: res.data });
 		} catch (error) {
 			console.log(error);
 		}
@@ -79,8 +90,10 @@ const UserState = (props) => {
 			value={{
 				users: state.users,
 				following: state.following,
+				feed: state.feed,
 				getUsers,
 				getFollowers,
+				getFeed,
 				followUser,
 				unFollowUser,
 			}}
